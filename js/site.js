@@ -1,5 +1,5 @@
 // Pull the user entered string from the page
-function getValue() {
+function getValues() {
     document.getElementById("alert").classList.add("d-none");
     let userString = document.getElementById("userString").value;
     let isPalindrome = checkForPalindrome(userString);
