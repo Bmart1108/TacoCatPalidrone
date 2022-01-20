@@ -14,7 +14,7 @@ main>.container {
 
 /*-----NAVBAR STYLES---*/
 .navbarBG {
-    background-color: var(--bm-dark-color);
+    background-color: var(--bm-secondary-color);
 }
 
 
@@ -74,9 +74,9 @@ main>.container {
 
 /*----FOOTER STYLES----*/
 .footer{
-    background-color: var(--bm-dark-color);
+    background-color: var(--bm-secondary-color);
     padding-right: 1rem;
-    color: var(--bm-light-color);
+    color: var(--bm-primary-colorr);
 
 }
 .sticky-footer {
@@ -87,12 +87,12 @@ main>.container {
 }
 
 footer .social>a{
-    color: var(--bm-light-color);
+    color: var(--bm-primary-color);
     opacity: .75;
 
 }
 
 footer .social>a:hover{
-    color:var(--bm-secondary-color);
+    color:var(--bm-light-color);
     opacity: .90;
 }
