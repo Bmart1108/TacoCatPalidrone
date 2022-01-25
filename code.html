@@ -68,28 +68,76 @@
             <div class="row">
                 <div class="col-12 col-lg-8">
                     <pre class="line-numbers"><code class="language-js">
-// display a message to the user
-function getMessage(){
+// Pull the user entered string from the page
+function getValues() {
+document.getElementById("alert").classList.add("d-none");
+let userString = document.getElementById("userString").value;
+let returnObj = checkForPalindrome(userString);
 
-let userMessage = document.getElementById("message").value;
 
-Swal.fire({
-position: 'top-end',
-icon: 'success',
-title: 'Your work has been saved',
-showConfirmButton: false,
-timer: 1500
-})
-console.log(userMessage);
-}; 
-                    </code>
+displayData(returnObj)
+
+
+}
+
+function checkForPalindrome(userString) {
+
+userString = userString.toLowerCase();
+let isPalindrome = false;
+let returnObj = {};
+
+
+let regex = /[^a-z0-9]/gi;
+userString = userString.replace(regex, "");
+
+let revString = "";
+for (let index = userString.length - 1; index >= 0; index--) {
+revString += userString[index];
+}
+
+if (revString !== userString) {
+isPalindrome = false;
+}
+else{
+isPalindrome = true
+}
+
+returnObj["isPalindrome"] = isPalindrome;
+returnObj["revString"] = revString;
+
+return returnObj;
+}
+
+function displayData(returnObj) {
+
+document.getElementById("alert").classList.add("alert-success");
+document.getElementById("alert").classList.remove("alert-danger")
+
+if (returnObj["isPalindrome"]== true) {
+document.getElementById("alert").classList.add("alert-success");
+document.getElementById("alertHeader").innerHTML = "well Done!"
+document.getElementById("msg").innerHTML = `Your phrase is a Palindrome<br>Your reversed string is:
+${returnObj["revString"]}`;
+
+} else {
+document.getElementById("alert").classList.add("alert-danger");
+document.getElementById("alertHeader").innerHTML = "Sorry!"
+document.getElementById("msg").innerHTML = `Your phrase is not a Palindrome<br>Your reversed string is:
+${returnObj["revString"]}`;
+}
+
+document.getElementById("alert").classList.remove("d-none");
+} </code>
                     </pre>
                 </div>
                 <div class="col-12 col-lg-4">
-                    <p>The code is structured in one function. It accesses the unser's input and displays a SweetAlert
-                        window.</p>
-                    <h5>getMessage</h5>
-                    <p>Prints the user's inputted message.</p>
+                    <p class="lead">The code is structured in three functions. The user inputs a word and the app determines if the user's input is a palindrome.</p>
+                    <h5>getValues</h5>
+                    <p>This function gathers the users input and displays it back to the user.</p>
+                    <h5>checkForPalindrome</h5>
+                    <p>This function uses regex and reverse string to reverse the users words and determine if its a palindrome.</p>
+                    <h5>displayData</h5>
+                    <p>This function is responsible for displaying the data to the user's window.</p>
                 </div>
             </div>
         </div>
